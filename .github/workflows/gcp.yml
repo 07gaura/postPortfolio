@@ -24,6 +24,7 @@ jobs:
     - name: Configure Docker client
       run: |-
         gcloud auth configure-docker --quiet
+        gcloud auth print-access-token | docker login -u oauth2accesstoken --password-stdin https://us-west3-docker.pkg.dev
 
     - name: Push Docker Image to Container Registry (GCR)
       env:
