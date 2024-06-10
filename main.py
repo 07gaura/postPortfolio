@@ -12,7 +12,7 @@ firebase_admin.initialize_app(cred,{
 	'databaseURL':'https://personal-portfolio-4dc7d-default-rtdb.asia-southeast1.firebasedatabase.app'
 })
 _ref = db.reference("/")
-
+port = os.environ['PORT'] if os.environ['PORT']!=None else 5000
 
 @app.route('/posts', methods = ['GET',"PATCH","DELETE"])
 def Posts():
@@ -84,5 +84,4 @@ def add_posts():
 		return response
 # driver function
 if __name__ == '__main__':
-
-	app.run(debug = True)
+	app.run(debug = True,host="0.0.0.0",port=port)
